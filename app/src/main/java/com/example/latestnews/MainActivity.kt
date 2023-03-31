@@ -27,10 +27,11 @@ class MainActivity : AppCompatActivity(), NewsItemClicked {
         setuprecycleview()
 
         //coroutine
-        lifecycleScope.launchWhenCreated {
+        @Suppress("DEPRECATION")
+        lifecycleScope.launchWhenCreated{
             bind.progressBar.isVisible = true
             val response = try {
-            RetrofitInstance.api.get("in","entertainment",100,"debf2e87b75e4057bb984afeb6abfa36")
+            RetrofitInstance.api.get("bbc-news",100,"debf2e87b75e4057bb984afeb6abfa36")
             } catch (_: IOException) {
                 Log.e(TAG, "IOException, you might not have internet connection")
                 bind.progressBar.isVisible = false
